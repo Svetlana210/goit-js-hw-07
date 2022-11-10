@@ -35,20 +35,21 @@ function onImageClick(e) {
   const selectedImage = e.target.dataset.source;
   // console.log(selectedImage)
   
-
-const instance = basicLightbox.create(`
-    <img src="${selectedImage}" width="800" height="600">
-`)
+  const instance = basicLightbox.create(
+    `<img src="${selectedImage}" width="800" height="600">`)
 
   instance.show()
   
-  window.addEventListener('keydown', onEscToClose)
+  gallery.addEventListener('keydown', onEscToClose)
   
   function onEscToClose(e) {
     if (e.key === 'Escape') {
     instance.close()
+    }
+    gallery.removeEventListener('keydown', onEscToClose)
+    // console.log(e.key)
   }
-}
+     
 }
 
 
